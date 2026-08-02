@@ -40,7 +40,7 @@ with new_product as (
   ) returning id
 )
 insert into product_notes (product_id, position, name_en, name_ar, sort_order)
-select id, 'top', 'Saffron', 'زعفران', 1 from new_product
+select id, 'top'::note_position, 'Saffron', 'زعفران', 1 from new_product
 union all select id, 'top', 'Cardamom', 'هيل', 2 from new_product
 union all select id, 'middle', 'Rose', 'ورد', 1 from new_product
 union all select id, 'middle', 'Amber', 'عنبر', 2 from new_product
@@ -91,7 +91,7 @@ with new_product as (
   ) returning id
 )
 insert into product_notes (product_id, position, name_en, name_ar, sort_order)
-select id, 'top', 'Bergamot', 'برغموت', 1 from new_product
+select id, 'top'::note_position, 'Bergamot', 'برغموت', 1 from new_product
 union all select id, 'top', 'Mandarin', 'يوسفي', 2 from new_product
 union all select id, 'middle', 'Jasmine', 'ياسمين', 1 from new_product
 union all select id, 'middle', 'Lily of the Valley', 'زنبق الوادي', 2 from new_product
@@ -139,7 +139,7 @@ with new_product as (
   ) returning id
 )
 insert into product_notes (product_id, position, name_en, name_ar, sort_order)
-select id, 'top', 'Grapefruit', 'جريب فروت', 1 from new_product
+select id, 'top'::note_position, 'Grapefruit', 'جريب فروت', 1 from new_product
 union all select id, 'top', 'Sea Notes', 'نفحات بحرية', 2 from new_product
 union all select id, 'middle', 'Lavender', 'خزامى', 1 from new_product
 union all select id, 'base', 'Ambergris', 'كهرمان', 1 from new_product
