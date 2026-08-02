@@ -1,0 +1,147 @@
+{
+  "brand": {
+    "name": "الأصلي",
+    "tagline": "عبق أصالتك"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "shop": "المتجر",
+    "story": "قصتنا",
+    "journal": "المجلة",
+    "contact": "تواصل معنا",
+    "cart": "السلة",
+    "search": "بحث"
+  },
+  "home": {
+    "heroTitle": "عبق أصالتك",
+    "heroSubtitle": "عطور مصنوعة يدوياً، متجذرة في التراث العربي، بروح تناسب دول الخليج اليوم.",
+    "heroCta": "تسوق المجموعة",
+    "bestsellersTitle": "الأكثر مبيعاً",
+    "bestsellersSubtitle": "المفضلة دائماً",
+    "viewAll": "عرض الكل",
+    "storyTeaserTitle": "قصتنا",
+    "storyTeaserBody": "من اقتناء أجود أنواع العود إلى تشطيب كل زجاجة يدوياً، الأصلي حرفة متوارثة، لا مجرد تصنيع.",
+    "storyTeaserCta": "اكتشف تراثنا",
+    "whyUsTitle": "لماذا الأصلي",
+    "featureCraftsmanship": "حرفية يدوية متقنة",
+    "featureSourcing": "مكونات مصدرها أخلاقي",
+    "featureShipping": "توصيل سريع لكافة دول الخليج",
+    "featureAuthenticity": "أصالة ١٠٠٪ مضمونة"
+  },
+  "shop": {
+    "title": "تسوق الكل",
+    "resultsCount": "{count, plural, =0 {لا توجد منتجات} one {منتج واحد} two {منتجان} few {# منتجات} many {# منتجاً} other {# منتج}}",
+    "filters": {
+      "title": "التصفية",
+      "clearAll": "مسح الكل",
+      "gender": "الفئة",
+      "genderMen": "رجالي",
+      "genderWomen": "نسائي",
+      "genderUnisex": "للجنسين",
+      "scentFamily": "عائلة العطر",
+      "price": "السعر",
+      "size": "الحجم",
+      "apply": "تطبيق التصفية"
+    },
+    "sort": {
+      "label": "ترتيب حسب",
+      "newest": "الأحدث",
+      "priceLowHigh": "السعر: من الأقل للأعلى",
+      "priceHighLow": "السعر: من الأعلى للأقل",
+      "bestselling": "الأكثر مبيعاً"
+    },
+    "empty": "لا توجد منتجات مطابقة لخيارات التصفية.",
+    "addToCart": "أضف إلى السلة",
+    "fromPrice": "يبدأ من {price}"
+  },
+  "product": {
+    "notesTitle": "مكونات العطر",
+    "notesTop": "المقدمة",
+    "notesMiddle": "القلب",
+    "notesBase": "القاعدة",
+    "moodTitle": "الأجواء والمناسبة",
+    "sizeTitle": "الحجم",
+    "quantity": "الكمية",
+    "addToCart": "أضف إلى السلة",
+    "addedToCart": "تمت الإضافة إلى السلة",
+    "outOfStock": "غير متوفر حالياً",
+    "onlyLeft": "تبقى {count} قطع فقط",
+    "descriptionTitle": "الوصف",
+    "relatedTitle": "قد يعجبك أيضاً",
+    "orderOnWhatsApp": "اطلب عبر واتساب",
+    "shareTitle": "مشاركة"
+  },
+  "cart": {
+    "title": "سلة التسوق",
+    "empty": "سلة التسوق فارغة.",
+    "continueShopping": "متابعة التسوق",
+    "subtotal": "المجموع الفرعي",
+    "shipping": "الشحن",
+    "shippingCalculated": "يُحسب عند إتمام الطلب",
+    "total": "الإجمالي",
+    "checkout": "إتمام الطلب",
+    "remove": "إزالة",
+    "size": "الحجم: {size} مل"
+  },
+  "checkout": {
+    "title": "إتمام الطلب",
+    "contactTitle": "معلومات التواصل",
+    "fullName": "الاسم الكامل",
+    "email": "البريد الإلكتروني (اختياري)",
+    "phone": "رقم الهاتف",
+    "shippingTitle": "عنوان الشحن",
+    "addressLine1": "العنوان",
+    "addressLine2": "شقة، مبنى، إلخ (اختياري)",
+    "city": "المدينة",
+    "country": "الدولة",
+    "notes": "ملاحظات على الطلب (اختياري)",
+    "paymentTitle": "طريقة الدفع",
+    "paymentCard": "الدفع بالبطاقة",
+    "paymentCod": "الدفع عند الاستلام",
+    "orderSummary": "ملخص الطلب",
+    "placeOrder": "تأكيد الطلب",
+    "placingOrder": "جاري تنفيذ طلبك...",
+    "successTitle": "شكراً لطلبك!",
+    "successBody": "تم استلام طلبك رقم {orderNumber}. سنتواصل معك قريباً.",
+    "errorTitle": "حدث خطأ ما",
+    "errorBody": "يرجى التحقق من بياناتك والمحاولة مجدداً، أو الطلب عبر واتساب بدلاً من ذلك."
+  },
+  "contact": {
+    "title": "تواصل معنا والدعم",
+    "whatsappTitle": "تواصل معنا عبر واتساب",
+    "whatsappBody": "أسرع طريقة للتواصل معنا — اسألنا عن المنتجات أو الطلبات أو أي استفسار آخر.",
+    "whatsappCta": "فتح واتساب",
+    "emailTitle": "البريد الإلكتروني",
+    "faqTitle": "الأسئلة الشائعة",
+    "shippingTitle": "الشحن والإرجاع",
+    "shippingBody": "نوفر الشحن لكافة دول الخليج خلال ٢-٥ أيام عمل. يمكن إرجاع المنتجات غير المفتوحة خلال ١٤ يوماً."
+  },
+  "story": {
+    "title": "قصتنا",
+    "heritageTitle": "التراث",
+    "sourcingTitle": "المصادر",
+    "craftsmanshipTitle": "الحرفية"
+  },
+  "journal": {
+    "title": "المجلة",
+    "subtitle": "أدلة وقصص عن العطور من الأصلي",
+    "readMore": "اقرأ المزيد"
+  },
+  "footer": {
+    "aboutTitle": "الأصلي",
+    "aboutBody": "عطور عربية فاخرة، صُنعت لتناسب روح الخليج المعاصرة.",
+    "shopTitle": "المتجر",
+    "companyTitle": "الشركة",
+    "supportTitle": "الدعم",
+    "newsletterTitle": "انضم إلى قائمتنا",
+    "newsletterBody": "كن أول من يعرف عن إصداراتنا الجديدة وعروضنا.",
+    "newsletterPlaceholder": "بريدك الإلكتروني",
+    "newsletterCta": "اشتراك",
+    "rights": "جميع الحقوق محفوظة."
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "currency": "درهم",
+    "aed": "{amount} د.إ"
+  }
+}

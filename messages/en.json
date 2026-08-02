@@ -1,0 +1,147 @@
+{
+  "brand": {
+    "name": "Alasly",
+    "tagline": "The Original Scent of You"
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "story": "Our Story",
+    "journal": "Journal",
+    "contact": "Contact",
+    "cart": "Cart",
+    "search": "Search"
+  },
+  "home": {
+    "heroTitle": "The Original Scent of You",
+    "heroSubtitle": "Handcrafted fragrances rooted in Arabian heritage, made for the modern GCC.",
+    "heroCta": "Shop the Collection",
+    "bestsellersTitle": "Bestsellers",
+    "bestsellersSubtitle": "Loved again and again",
+    "viewAll": "View All",
+    "storyTeaserTitle": "Our Story",
+    "storyTeaserBody": "From sourcing rare oud in the highlands to hand-finishing every bottle, Alasly is a craft passed down, not manufactured.",
+    "storyTeaserCta": "Discover Our Heritage",
+    "whyUsTitle": "Why Alasly",
+    "featureCraftsmanship": "Hand-Finished Craftsmanship",
+    "featureSourcing": "Ethically Sourced Ingredients",
+    "featureShipping": "Fast GCC-Wide Delivery",
+    "featureAuthenticity": "100% Authentic, Guaranteed"
+  },
+  "shop": {
+    "title": "Shop All",
+    "resultsCount": "{count, plural, =0 {No products} one {# product} other {# products}}",
+    "filters": {
+      "title": "Filters",
+      "clearAll": "Clear All",
+      "gender": "Gender",
+      "genderMen": "Men",
+      "genderWomen": "Women",
+      "genderUnisex": "Unisex",
+      "scentFamily": "Scent Family",
+      "price": "Price",
+      "size": "Size",
+      "apply": "Apply Filters"
+    },
+    "sort": {
+      "label": "Sort by",
+      "newest": "Newest",
+      "priceLowHigh": "Price: Low to High",
+      "priceHighLow": "Price: High to Low",
+      "bestselling": "Bestselling"
+    },
+    "empty": "No products match your filters.",
+    "addToCart": "Add to Cart",
+    "fromPrice": "From {price}"
+  },
+  "product": {
+    "notesTitle": "Scent Notes",
+    "notesTop": "Top Notes",
+    "notesMiddle": "Middle Notes",
+    "notesBase": "Base Notes",
+    "moodTitle": "Mood & Occasion",
+    "sizeTitle": "Size",
+    "quantity": "Quantity",
+    "addToCart": "Add to Cart",
+    "addedToCart": "Added to cart",
+    "outOfStock": "Out of Stock",
+    "onlyLeft": "Only {count} left",
+    "descriptionTitle": "Description",
+    "relatedTitle": "You May Also Like",
+    "orderOnWhatsApp": "Order via WhatsApp",
+    "shareTitle": "Share"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "continueShopping": "Continue Shopping",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "shippingCalculated": "Calculated at checkout",
+    "total": "Total",
+    "checkout": "Proceed to Checkout",
+    "remove": "Remove",
+    "size": "Size: {size}ml"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "contactTitle": "Contact Information",
+    "fullName": "Full Name",
+    "email": "Email (optional)",
+    "phone": "Phone Number",
+    "shippingTitle": "Shipping Address",
+    "addressLine1": "Address",
+    "addressLine2": "Apartment, suite, etc. (optional)",
+    "city": "City",
+    "country": "Country",
+    "notes": "Order Notes (optional)",
+    "paymentTitle": "Payment Method",
+    "paymentCard": "Pay by Card",
+    "paymentCod": "Cash on Delivery",
+    "orderSummary": "Order Summary",
+    "placeOrder": "Place Order",
+    "placingOrder": "Placing your order...",
+    "successTitle": "Thank you for your order!",
+    "successBody": "Your order {orderNumber} has been received. We'll be in touch shortly.",
+    "errorTitle": "Something went wrong",
+    "errorBody": "Please check your details and try again, or order via WhatsApp instead."
+  },
+  "contact": {
+    "title": "Contact & Support",
+    "whatsappTitle": "Chat with us on WhatsApp",
+    "whatsappBody": "Fastest way to reach us — ask about products, orders, or anything else.",
+    "whatsappCta": "Open WhatsApp",
+    "emailTitle": "Email",
+    "faqTitle": "Frequently Asked Questions",
+    "shippingTitle": "Shipping & Returns",
+    "shippingBody": "We ship across the GCC within 2-5 business days. Returns accepted within 14 days on unopened items."
+  },
+  "story": {
+    "title": "Our Story",
+    "heritageTitle": "Heritage",
+    "sourcingTitle": "Sourcing",
+    "craftsmanshipTitle": "Craftsmanship"
+  },
+  "journal": {
+    "title": "Journal",
+    "subtitle": "Scent guides and stories from Alasly",
+    "readMore": "Read More"
+  },
+  "footer": {
+    "aboutTitle": "Alasly",
+    "aboutBody": "Premium Arabian perfumery, crafted for the modern GCC.",
+    "shopTitle": "Shop",
+    "companyTitle": "Company",
+    "supportTitle": "Support",
+    "newsletterTitle": "Join Our List",
+    "newsletterBody": "Be the first to know about new releases and offers.",
+    "newsletterPlaceholder": "Your email address",
+    "newsletterCta": "Subscribe",
+    "rights": "All rights reserved."
+  },
+  "common": {
+    "loading": "Loading...",
+    "currency": "AED",
+    "aed": "AED {amount}"
+  }
+}
