@@ -7,6 +7,7 @@ import { AddToCart } from "@/components/product/add-to-cart";
 import { RelatedProducts } from "@/components/product/related-products";
 import { getProductBySlug, getRelatedProducts } from "@/lib/queries";
 import { localize, type Locale } from "@/lib/types";
+import { buildAlternates, buildProductDescription, buildProductTitle } from "@/lib/seo";
 
 interface ProductPageProps {
   params: { locale: string; slug: string };
@@ -18,16 +19,46 @@ export async function generateMetadata({
   const product = await getProductBySlug(slug);
   if (!product) return {};
 
-  const name = localize(locale as Locale, product.name_en, product.name_ar);
-  const description = localize(
-    locale as Locale,
+  const l = locale as Locale;
+  const name = localize(l, product.name_en, product.name_ar);
+  const shortDescription = localize(
+    l,
     product.short_description_en,
     product.short_description_ar
   );
+  const metaTitle = localize(l, product.meta_title_en, product.meta_title_ar);
+  const metaDescription = localize(
+    l,
+    product.meta_description_en,
+    product.meta_description_ar
+  );
+
+  // "[Perfume Name] Price in Dubai | Authentic Al Asly UAE" (+ AR pattern) by
+  // default; a per-product meta_title/meta_description in the database wins
+  // when set. concentration_en (not the localized field) feeds the EDP/EDT
+  // abbreviation since it's language-independent.
+  const title = metaTitle ?? buildProductTitle(l, name);
+  const description =
+    metaDescription ??
+    buildProductDescription(l, {
+      name,
+      concentration: product.concentration_en,
+      shortDescription,
+    });
+
+  const primaryImage = product.images.find((i) => i.is_primary) ?? product.images[0];
 
   return {
-    title: name,
-    description: description ?? undefined,
+    title,
+    description,
+    alternates: buildAlternates(l, `/product/${slug}`),
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      locale: l === "ar" ? "ar_AE" : "en_AE",
+      images: primaryImage ? [{ url: primaryImage.url }] : undefined,
+    },
   };
 }
 
