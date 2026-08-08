@@ -13,18 +13,18 @@
     "search": "Search"
   },
   "home": {
-    "heroTitle": "The Original Scent of You",
-    "heroSubtitle": "Handcrafted fragrances rooted in Arabian heritage, made for the modern GCC.",
-    "heroCta": "Shop the Collection",
+    "heroTitle": "Not Everything. Just What's Worth Wearing.",
+    "heroSubtitle": "A hand-picked edit of authentic branded and niche perfumes, sourced directly from authorized dealers in Dubai — so you know exactly what you're getting.",
+    "heroCta": "See What We Picked",
     "bestsellersTitle": "Bestsellers",
     "bestsellersSubtitle": "Loved again and again",
     "viewAll": "View All",
     "storyTeaserTitle": "Our Story",
-    "storyTeaserBody": "From sourcing rare oud in the highlands to hand-finishing every bottle, Alasly is a craft passed down, not manufactured.",
-    "storyTeaserCta": "Discover Our Heritage",
-    "whyUsTitle": "Why Alasly",
-    "featureCraftsmanship": "Hand-Finished Craftsmanship",
-    "featureSourcing": "Ethically Sourced Ingredients",
+    "storyTeaserBody": "We're not trying to stock every fragrance in Dubai — just the ones worth your money. Every bottle is sourced directly from authorized dealers, vetted before it ever makes the list.",
+    "storyTeaserCta": "See How We Choose",
+    "whyUsTitle": "Why Al Asly",
+    "featureCraftsmanship": "Hand-Picked, Not Mass-Stocked",
+    "featureSourcing": "Sourced From Authorized Dealers",
     "featureShipping": "Fast GCC-Wide Delivery",
     "featureAuthenticity": "100% Authentic, Guaranteed"
   },
@@ -67,13 +67,14 @@
     "outOfStock": "Out of Stock",
     "onlyLeft": "Only {count} left",
     "descriptionTitle": "Description",
-    "relatedTitle": "You May Also Like",
+    "relatedTitle": "More From Our Current Picks",
     "orderOnWhatsApp": "Order via WhatsApp",
     "shareTitle": "Share",
     "retailPrice": "Retail Price",
     "alaslyPrice": "Al Asly Price",
     "youSave": "You Save",
-    "youSaveShort": "Save {percentage}%"
+    "youSaveShort": "Save {percentage}%",
+    "sourcingTrustLine": "Sourced directly from authorized dealers — see exactly what you save."
   },
   "cart": {
     "title": "Your Cart",
@@ -122,9 +123,9 @@
   },
   "story": {
     "title": "Our Story",
-    "heritageTitle": "Heritage",
-    "sourcingTitle": "Sourcing",
-    "craftsmanshipTitle": "Craftsmanship"
+    "heritageTitle": "Why We Started",
+    "sourcingTitle": "Where It Comes From",
+    "curationTitle": "How We Choose"
   },
   "journal": {
     "title": "Journal",
