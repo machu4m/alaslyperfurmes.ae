@@ -22,6 +22,20 @@ that needs hand-tuned copy (a specific long-tail phrase, a promo, etc.)
 without touching code. See `oud-al-malaki` in `seed.sql` for a worked
 example; every other seed product falls through to the template.
 
+## Journal post titles & descriptions
+
+Same override pattern as products: `journal_posts.meta_title_en`/`meta_title_ar`
+and `meta_description_en`/`meta_description_ar` win when set; otherwise the
+title falls back to `{Post Title} | Al Asly Journal` and the description to
+the post's own excerpt (trimmed to ~160 characters). See
+`best-oud-perfumes-in-dubai-2026` in `seed.sql` for an override example.
+
+Long-form posts are also where most of the site's internal linking to
+product pages happens — both hand-written links inside the Markdown body and
+the automatic "Shop {family} Perfumes" block driven by
+`journal_post_scent_families`. See `docs/DATABASE.md` → "Journal (long-form
+SEO content)" for how that's structured.
+
 ## Sitemap & robots
 
 - `src/app/sitemap.ts` → `/sitemap.xml`. Includes every static content page
