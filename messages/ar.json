@@ -13,18 +13,18 @@
     "search": "بحث"
   },
   "home": {
-    "heroTitle": "عبق أصالتك",
-    "heroSubtitle": "عطور مصنوعة يدوياً، متجذرة في التراث العربي، بروح تناسب دول الخليج اليوم.",
-    "heroCta": "تسوق المجموعة",
+    "heroTitle": "ليس كل شيء. فقط ما يستحق أن تلبسه.",
+    "heroSubtitle": "مجموعة مُنتقاة بعناية من العطور الأصلية، الماركات العالمية والنيش، مصدرها مباشرة من موزعين معتمدين في دبي — لتعرف تماماً ماذا تشتري.",
+    "heroCta": "شاهد اختياراتنا",
     "bestsellersTitle": "الأكثر مبيعاً",
     "bestsellersSubtitle": "المفضلة دائماً",
     "viewAll": "عرض الكل",
     "storyTeaserTitle": "قصتنا",
-    "storyTeaserBody": "من اقتناء أجود أنواع العود إلى تشطيب كل زجاجة يدوياً، الأصلي حرفة متوارثة، لا مجرد تصنيع.",
-    "storyTeaserCta": "اكتشف تراثنا",
+    "storyTeaserBody": "لا نحاول عرض كل عطر موجود في دبي — فقط ما يستحق أن تنفق عليه. كل زجاجة مصدرها مباشر من موزعين معتمدين، ويتم التحقق منها قبل إضافتها إلى القائمة.",
+    "storyTeaserCta": "تعرّف على طريقة اختيارنا",
     "whyUsTitle": "لماذا الأصلي",
-    "featureCraftsmanship": "حرفية يدوية متقنة",
-    "featureSourcing": "مكونات مصدرها أخلاقي",
+    "featureCraftsmanship": "مُنتقاة بعناية، لا مُكدّسة",
+    "featureSourcing": "مصدرها موزعون معتمدون",
     "featureShipping": "توصيل سريع لكافة دول الخليج",
     "featureAuthenticity": "أصالة ١٠٠٪ مضمونة"
   },
@@ -67,13 +67,14 @@
     "outOfStock": "غير متوفر حالياً",
     "onlyLeft": "تبقى {count} قطع فقط",
     "descriptionTitle": "الوصف",
-    "relatedTitle": "قد يعجبك أيضاً",
+    "relatedTitle": "المزيد من اختياراتنا الحالية",
     "orderOnWhatsApp": "اطلب عبر واتساب",
     "shareTitle": "مشاركة",
     "retailPrice": "السعر الأصلي",
     "alaslyPrice": "سعر الأصلي",
     "youSave": "التوفير",
-    "youSaveShort": "وفّر {percentage}٪"
+    "youSaveShort": "وفّر {percentage}٪",
+    "sourcingTrustLine": "مصدرها مباشرة من موزعين معتمدين — لترى بالضبط كم توفّر."
   },
   "cart": {
     "title": "سلة التسوق",
@@ -122,9 +123,9 @@
   },
   "story": {
     "title": "قصتنا",
-    "heritageTitle": "التراث",
-    "sourcingTitle": "المصادر",
-    "craftsmanshipTitle": "الحرفية"
+    "heritageTitle": "لماذا بدأنا",
+    "sourcingTitle": "من أين نجلبها",
+    "curationTitle": "كيف نختار"
   },
   "journal": {
     "title": "المجلة",
