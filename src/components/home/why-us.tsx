@@ -1,12 +1,12 @@
 import { useTranslations } from "next-intl";
-import { Gem, Leaf, ShieldCheck, Truck } from "lucide-react";
+import { Gem, Handshake, ShieldCheck, Truck } from "lucide-react";
 
 export function WhyUs() {
   const t = useTranslations("home");
 
   const features = [
     { icon: Gem, label: t("featureCraftsmanship") },
-    { icon: Leaf, label: t("featureSourcing") },
+    { icon: Handshake, label: t("featureSourcing") },
     { icon: Truck, label: t("featureShipping") },
     { icon: ShieldCheck, label: t("featureAuthenticity") },
   ];
