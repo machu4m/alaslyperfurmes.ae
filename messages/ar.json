@@ -69,7 +69,11 @@
     "descriptionTitle": "الوصف",
     "relatedTitle": "قد يعجبك أيضاً",
     "orderOnWhatsApp": "اطلب عبر واتساب",
-    "shareTitle": "مشاركة"
+    "shareTitle": "مشاركة",
+    "retailPrice": "السعر الأصلي",
+    "alaslyPrice": "سعر الأصلي",
+    "youSave": "التوفير",
+    "youSaveShort": "وفّر {percentage}٪"
   },
   "cart": {
     "title": "سلة التسوق",
