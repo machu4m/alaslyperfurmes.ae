@@ -79,3 +79,36 @@ to hold two batches of the same SKU simultaneously (old stock not yet sold
 through when new stock arrives), move `batch_code` out to its own
 `batches(id, variant_id, code, quantity, received_at)` table and decrement
 against a specific batch row instead of the variant directly.
+
+### Journal (long-form SEO content)
+
+`journal_posts` carries the same three patterns as `products`:
+
+- **Bilingual fields** (`title_en`/`title_ar`, etc.) — `content_en`/`content_ar`
+  are **Markdown**, not plain text (rendered by
+  `src/components/journal/markdown-content.tsx`), so a "Best Oud Perfumes in
+  Dubai 2026" listicle or a comparison guide can actually use headings,
+  lists, and tables instead of one unformatted paragraph.
+- **SEO overrides** — `meta_title_en`/`meta_title_ar`/`meta_description_en`/
+  `meta_description_ar`, same fallback-to-generated-copy pattern as
+  `products.meta_title_en` (see `docs/SEO.md`).
+- **Featured image** — `cover_image_url` plus bilingual alt text
+  (`cover_image_alt_en`/`cover_image_alt_ar`), shown on both the journal
+  index and the post page.
+
+`journal_post_scent_families` (many-to-many, same shape as
+`product_scent_families` minus `is_primary`) is what drives **internal
+linking to product pages by scent family**: tag a post `oud` and
+`getProductsByScentFamilies()` (`src/lib/queries.ts`) pulls every current
+Oud product into a "Shop Oud Perfumes" block at the end of the post
+(`src/components/journal/shop-scent-families.tsx`) — the link list is
+generated from live catalog data, so it can't go stale as products are
+added, removed, or restocked. Posts can also link to *specific* products or
+pages inline within the Markdown body itself — see the seed posts for
+examples of both.
+
+Markdown links written as relative paths without a locale prefix (e.g.
+`[Oud Al Malaki](/product/oud-al-malaki)`) get `/en` or `/ar` prepended
+automatically at render time, matching whichever locale the post is being
+read in — so the `content_en` and `content_ar` copies of a post never need
+separately-prefixed links.
