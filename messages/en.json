@@ -141,10 +141,11 @@
     "sourcingTitle": "Where It Comes From",
     "curationTitle": "How We Choose"
   },
-  "journal": {
+   "journal": {
     "title": "Journal",
     "subtitle": "Scent guides and stories from Alasly",
-    "readMore": "Read More"
+    "readMore": "Read More",
+    "shopRelatedTitle": "Shop {families} Perfumes"
   },
   "footer": {
     "aboutTitle": "Alasly",
