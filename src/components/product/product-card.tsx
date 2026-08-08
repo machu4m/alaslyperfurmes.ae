@@ -1,19 +1,19 @@
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { Locale, Product } from "@/lib/types";
 import { localize } from "@/lib/types";
-import { formatPrice } from "@/lib/utils";
+import { PriceTransparency } from "@/components/product/price-transparency";
 
 export function ProductCard({ product }: { product: Product }) {
   const locale = useLocale() as Locale;
-  const t = useTranslations("shop");
 
   const primaryImage =
     product.images.find((i) => i.is_primary) ?? product.images[0];
-  const fromPrice = Math.min(
-    ...product.variants.map((v) => v.price),
-    Infinity
+  // Card shows pricing for the cheapest size, same as the previous "from" price.
+  const cardVariant = product.variants.reduce<Product["variants"][number] | null>(
+    (cheapest, v) => (!cheapest || v.price < cheapest.price ? v : cheapest),
+    null
   );
   const primaryFamily = product.scent_families[0];
 
@@ -50,11 +50,16 @@ export function ProductCard({ product }: { product: Product }) {
           {localize(locale, product.name_en, product.name_ar)}
         </h3>
       </div>
-      <p className="mt-1 text-sm text-ink-400">
-        {Number.isFinite(fromPrice)
-          ? t("fromPrice", { price: formatPrice(fromPrice, locale, product.currency) })
-          : null}
-      </p>
+      {cardVariant && (
+        <div className="mt-1.5">
+          <PriceTransparency
+            price={cardVariant.price}
+            retailPrice={cardVariant.retail_price}
+            currency={product.currency}
+            size="compact"
+          />
+        </div>
+      )}
     </Link>
   );
 }
