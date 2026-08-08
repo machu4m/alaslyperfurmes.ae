@@ -117,6 +117,29 @@ export interface OrderConfirmation {
   items: OrderConfirmationItem[];
 }
 
+export interface JournalPost {
+  id: string;
+  slug: string;
+  title_en: string;
+  title_ar: string;
+  excerpt_en: string | null;
+  excerpt_ar: string | null;
+  /** Markdown — see src/components/journal/markdown-content.tsx. */
+  content_en: string | null;
+  content_ar: string | null;
+  cover_image_url: string | null;
+  cover_image_alt_en: string | null;
+  cover_image_alt_ar: string | null;
+  /** SEO overrides — same pattern as Product's meta_title_en/meta_description_en fields. */
+  meta_title_en: string | null;
+  meta_title_ar: string | null;
+  meta_description_en: string | null;
+  meta_description_ar: string | null;
+  published_at: string | null;
+  /** Drives the automatic "Shop {family} Perfumes" internal-linking block. */
+  scent_families: ScentFamily[];
+}
+
 /** Pick the localized value of a bilingual `_en`/`_ar` field pair. */
 export function localize<T extends string | null>(
   locale: Locale,
