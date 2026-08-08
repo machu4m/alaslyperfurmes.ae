@@ -1,5 +1,26 @@
+import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import type { Locale } from "@/lib/types";
+import { buildAlternates } from "@/lib/seo";
+
+export function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Metadata {
+  const l = locale as Locale;
+  return {
+    title:
+      l === "ar"
+        ? "قصتنا | الأصلي عطور أصلية الإمارات"
+        : "Our Story | Al Asly Authentic Perfumes UAE",
+    description:
+      l === "ar"
+        ? "لماذا بدأنا، من أين نجلب عطورنا، وكيف نختار ما يستحق أن يكون في قائمتنا."
+        : "Why we started, where we source from, and how we decide what makes the list.",
+    alternates: buildAlternates(l, "/story"),
+  };
+}
 
 const copy = {
   en: {
