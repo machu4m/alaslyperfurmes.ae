@@ -14,7 +14,7 @@ const PRODUCT_SELECT = `
   mood_en, mood_ar,
   gender, concentration_en, concentration_ar,
   currency, is_featured,
-  variants:product_variants(id, sku, size_ml, price, compare_at_price, stock_quantity, is_default),
+  variants:product_variants(id, sku, size_ml, price, retail_price, stock_quantity, is_default),
   images:product_images(id, url, alt_en, alt_ar, is_primary, sort_order),
   notes:product_notes(id, position, name_en, name_ar, sort_order),
   scent_families:product_scent_families(is_primary, scent_family:scent_families(id, slug, name_en, name_ar, sort_order))
