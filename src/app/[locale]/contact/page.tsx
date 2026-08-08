@@ -1,7 +1,25 @@
+import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { MessageCircle, Mail } from "lucide-react";
 import { whatsAppLink } from "@/lib/utils";
 import type { Locale } from "@/lib/types";
+import { buildAlternates } from "@/lib/seo";
+
+export function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Metadata {
+  const l = locale as Locale;
+  return {
+    title: l === "ar" ? "تواصل معنا والدعم | الأصلي الإمارات" : "Contact & Support | Al Asly UAE",
+    description:
+      l === "ar"
+        ? "تواصل معنا عبر واتساب أو البريد الإلكتروني، واطّلع على أسئلتنا الشائعة وسياسة الشحن والإرجاع."
+        : "Reach us on WhatsApp or email, and check our FAQ and shipping & returns policy.",
+    alternates: buildAlternates(l, "/contact"),
+  };
+}
 
 const faqs = {
   en: [
