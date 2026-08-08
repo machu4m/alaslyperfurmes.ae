@@ -65,6 +65,11 @@ export interface Product {
   concentration_ar: string | null;
   currency: string;
   is_featured: boolean;
+  /** SEO overrides — when set, used verbatim instead of the generated title/description template. */
+  meta_title_en: string | null;
+  meta_title_ar: string | null;
+  meta_description_en: string | null;
+  meta_description_ar: string | null;
   variants: ProductVariant[];
   images: ProductImage[];
   notes: ProductNote[];
