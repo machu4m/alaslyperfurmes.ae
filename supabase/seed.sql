@@ -168,12 +168,165 @@ insert into product_images (product_id, url, alt_en, alt_ar, is_primary, sort_or
 select id, '/images/products/nasim-al-sahra-1.jpg', 'Nasim Al Sahra bottle', 'زجاجة نسيم الصحراء', true, 1 from products where slug = 'nasim-al-sahra';
 
 -- ---------------------------------------------------------------------
--- One journal post
 -- ---------------------------------------------------------------------
-insert into journal_posts (slug, title_en, title_ar, excerpt_en, excerpt_ar, content_en, content_ar, is_published, published_at) values (
+-- Journal: long-form SEO content — scent guides and comparison guides.
+-- content_en/content_ar are Markdown (rendered by
+-- src/components/journal/markdown-content.tsx); relative links like
+-- /product/oud-al-malaki or /shop?scentFamily=oud are written without a
+-- locale prefix and get one added automatically at render time.
+-- ---------------------------------------------------------------------
+
+-- Post 1: general guide, not tied to a scent family
+insert into journal_posts (
+  slug, title_en, title_ar,
+  excerpt_en, excerpt_ar,
+  content_en, content_ar,
+  cover_image_url, cover_image_alt_en, cover_image_alt_ar,
+  is_published, published_at
+) values (
   'how-to-pick-your-signature-scent',
   'How to Pick Your Signature Scent', 'كيف تختار عطرك المميز',
   'A short guide to finding the fragrance that becomes unmistakably yours.', 'دليل مختصر لإيجاد العطر الذي يصبح بصمتك الخاصة.',
-  'Full article content goes here...', 'محتوى المقال الكامل هنا...',
-  true, now()
+  '## Start With the Notes Pyramid
+
+Every fragrance is built in three layers: top notes (the first 15 minutes), middle notes (the heart, once it settles), and base notes (what lingers on your skin hours later). Judge a perfume on the base, not the spray you smell in the store — that''s the part you''ll actually wear all day.
+
+## Match the Scent to the Occasion
+
+- **Oud and oriental** — evenings, formal occasions, cooler weather
+- **Fresh and citrus** — daily wear, hot climates, office
+- **Floral** — daytime, spring/summer, lighter settings
+
+## Test It on Skin, Not Paper
+
+A fragrance reads differently on your skin than on a card — body chemistry changes how top and base notes develop. If you can, wear a sample for a full day before committing to a full bottle.
+
+Ready to start testing? Browse our [current picks](/shop).',
+  '## ابدأ بهرم مكونات العطر
+
+يُبنى كل عطر على ثلاث طبقات: مقدمة (أول ١٥ دقيقة)، قلب (بعد أن يستقر العطر)، وقاعدة (ما يبقى على بشرتك بعد ساعات). احكم على العطر من خلال قاعدته وليس من الرشة الأولى التي تشمها في المتجر — فتلك هي الطبقة التي سترتديها فعلياً طوال اليوم.
+
+## اختر العطر المناسب للمناسبة
+
+- **العود والشرقي** — للسهرات والمناسبات الرسمية وأجواء الطقس البارد
+- **المنعش والحمضي** — للاستخدام اليومي والأجواء الحارة والعمل
+- **الزهري** — للنهار وأجواء الربيع والصيف والإطلالات الأخف
+
+## جربه على بشرتك، لا على الورق
+
+يظهر العطر بشكل مختلف على بشرتك عنه على بطاقة الاختبار — فكيمياء الجسم تُغيّر من تطور المقدمة والقاعدة. إن استطعت، جرّب العينة ليوم كامل قبل شراء الزجاجة الكاملة.
+
+مستعد للبدء؟ تصفح [اختياراتنا الحالية](/shop).',
+  '/images/journal/signature-scent-guide.jpg', 'Perfume notes pyramid illustration', 'رسم توضيحي لهرم مكونات العطر',
+  true, now() - interval '14 days'
 );
+
+-- Post 2: "Best Oud Perfumes in Dubai 2026" — tagged 'oud', links to a
+-- specific product and to the Authenticity page.
+with new_post as (
+  insert into journal_posts (
+    slug, title_en, title_ar,
+    excerpt_en, excerpt_ar,
+    content_en, content_ar,
+    cover_image_url, cover_image_alt_en, cover_image_alt_ar,
+    meta_title_en, meta_title_ar,
+    meta_description_en, meta_description_ar,
+    is_published, published_at
+  ) values (
+    'best-oud-perfumes-in-dubai-2026',
+    'Best Oud Perfumes in Dubai 2026', 'أفضل عطور العود في دبي ٢٠٢٦',
+    'Our current picks for authentic oud, from everyday wear to statement evening scents.', 'اختياراتنا الحالية من عطور العود الأصلية، من الاستخدام اليومي إلى عطور السهرات المميزة.',
+    '## Why Oud, and Why Now
+
+Oud remains the fragrance most associated with the UAE — but it''s also the most counterfeited. Before you buy, read our [authenticity page](/authenticity) on how we source directly from authorized Dubai dealers.
+
+## Our Current Pick
+
+**[Oud Al Malaki](/product/oud-al-malaki)** opens with Cambodian oud and saffron, settling into rose and amber over a smoky, resinous base — built for evenings and formal occasions in cooler weather. Every bottle ships with its batch code on the order confirmation.
+
+## How to Wear Oud
+
+Oud is concentrated — two sprays on pulse points (wrists, neck) is enough for most evenings. It develops over hours, so judge it after 30 minutes on skin, not straight out of the bottle.
+
+Browse every oud fragrance we currently carry below.',
+    '## لماذا العود، ولماذا الآن
+
+يبقى العود العطر الأكثر ارتباطاً بالإمارات — لكنه أيضاً الأكثر عرضة للتقليد. قبل الشراء، اطّلع على [صفحة الأصالة](/authenticity) لتعرف كيف نستورد مباشرة من موزعين معتمدين في دبي.
+
+## اختيارنا الحالي
+
+يفتح **[عود الملكي](/product/oud-al-malaki)** بالعود الكمبودي والزعفران، لينتقل إلى الورد والعنبر فوق قاعدة دخانية راتنجية — مثالي للسهرات والمناسبات الرسمية في الطقس البارد. كل زجاجة تصل مع رمز دفعتها مذكوراً في تأكيد الطلب.
+
+## كيف ترتدي العود
+
+العود مركّز — رشتان على نقاط النبض (المعصمين والرقبة) تكفيان لمعظم السهرات. يتطور العطر خلال ساعات، لذا احكم عليه بعد ٣٠ دقيقة على البشرة، لا مباشرة من الزجاجة.
+
+تصفح كل عطور العود المتوفرة لدينا حالياً أدناه.',
+    '/images/journal/best-oud-dubai-2026.jpg', 'Oud perfume bottles on display', 'زجاجات عطور العود معروضة',
+    'Best Oud Perfumes in Dubai 2026 | Authentic Al Asly UAE',
+    'أفضل عطور العود في دبي ٢٠٢٦ | الأصلي عطور أصلية الإمارات',
+    'Our current picks for authentic oud perfumes in Dubai, 2026 — sourced directly from authorized dealers, with batch codes you can verify.',
+    'اختياراتنا الحالية من عطور العود الأصلية في دبي لعام ٢٠٢٦ — مصدرها مباشر من موزعين معتمدين، مع أرقام دفعات يمكنك التحقق منها.',
+    true, now() - interval '5 days'
+  ) returning id
+)
+insert into journal_post_scent_families (journal_post_id, scent_family_id)
+select np.id, sf.id from new_post np, scent_families sf where sf.slug = 'oud';
+
+-- Post 3: comparison guide — tagged 'oud' + 'floral', includes a Markdown
+-- table to exercise the GFM table styling.
+with new_post as (
+  insert into journal_posts (
+    slug, title_en, title_ar,
+    excerpt_en, excerpt_ar,
+    content_en, content_ar,
+    cover_image_url, cover_image_alt_en, cover_image_alt_ar,
+    is_published, published_at
+  ) values (
+    'oud-vs-floral-how-to-choose',
+    'Oud vs. Floral: How to Choose Your Signature Scent', 'العود أم الزهري: كيف تختار عطرك المميز',
+    'Two very different scent families — here''s how to tell which one actually fits how you live.', 'عائلتان مختلفتان تماماً — إليك كيف تعرف أيهما يناسب أسلوب حياتك فعلاً.',
+    '## The Short Version
+
+| | Oud | Floral |
+|---|---|---|
+| Best for | Evenings, formal occasions | Daytime, spring/summer |
+| Character | Deep, smoky, long-lasting | Light, fresh, romantic |
+| Try | [Oud Al Malaki](/product/oud-al-malaki) | [Zahrat Al Fajr](/product/zahrat-al-fajr) |
+
+## Oud, in More Depth
+
+Oud is resinous and smoky, built to last — a couple of sprays carries through a whole evening. It reads formal by default, which is why it''s the default choice for occasions rather than the office.
+
+## Floral, in More Depth
+
+Floral fragrances lean lighter and brighter, layering white flowers over soft citrus or musk. They read appropriate for daylight hours and warmer months, where an oud can feel heavy.
+
+## Can''t Decide?
+
+Most people end up owning both — oud for evenings, floral for daytime — rather than picking one forever. See our full [oud](/shop?scentFamily=oud) and [floral](/shop?scentFamily=floral) collections.',
+    '## الخلاصة السريعة
+
+| | العود | الزهري |
+|---|---|---|
+| الأنسب لـ | السهرات والمناسبات الرسمية | النهار وفصلي الربيع والصيف |
+| الطابع | عميق ودخاني وثابت لفترة طويلة | خفيف ومنعش ورومانسي |
+| جرّب | [عود الملكي](/product/oud-al-malaki) | [زهرة الفجر](/product/zahrat-al-fajr) |
+
+## العود، بتفصيل أكثر
+
+العود راتنجي ودخاني، مصمم ليدوم — رشتان تكفيان لتغطية سهرة كاملة. يُعتبر رسمياً بطبيعته، لذا فهو الخيار الافتراضي للمناسبات لا للعمل.
+
+## الزهري، بتفصيل أكثر
+
+تميل العطور الزهرية إلى الخفة والانتعاش، بطبقات من الزهور البيضاء فوق حمضيات أو مسك ناعم. تناسب ساعات النهار والأشهر الأكثر دفئاً، حيث قد يبدو العود ثقيلاً.
+
+## لا تستطيع الاختيار؟
+
+معظم الناس ينتهي بهم الأمر بامتلاك الاثنين — العود للسهرات والزهري للنهار — بدلاً من اختيار واحد للأبد. شاهد مجموعتنا الكاملة من [العود](/shop?scentFamily=oud) و[الزهري](/shop?scentFamily=floral).',
+    '/images/journal/oud-vs-floral.jpg', 'Oud and floral perfume bottles side by side', 'زجاجات عطر العود والزهري جنباً إلى جنب',
+    true, now() - interval '2 days'
+  ) returning id
+)
+insert into journal_post_scent_families (journal_post_id, scent_family_id)
+select np.id, sf.id from new_post np, scent_families sf where sf.slug in ('oud', 'floral');
