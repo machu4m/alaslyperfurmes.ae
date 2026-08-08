@@ -40,7 +40,7 @@ with new_product as (
   ) returning id
 )
 insert into product_notes (product_id, position, name_en, name_ar, sort_order)
-select id, 'top'::note_position, 'Saffron', 'زعفران', 1 from new_product
+select id, 'top', 'Saffron', 'زعفران', 1 from new_product
 union all select id, 'top', 'Cardamom', 'هيل', 2 from new_product
 union all select id, 'middle', 'Rose', 'ورد', 1 from new_product
 union all select id, 'middle', 'Amber', 'عنبر', 2 from new_product
@@ -58,10 +58,10 @@ insert into product_collections (product_id, collection_id)
 select p.id, c.id from products p, collections c
 where p.slug = 'oud-al-malaki' and c.slug in ('bestsellers', 'signature-collection');
 
-insert into product_variants (product_id, sku, size_ml, price, compare_at_price, stock_quantity, is_default)
-select id, 'ALM-50', 50, 480.00, null, 40, false from products where slug = 'oud-al-malaki'
+insert into product_variants (product_id, sku, size_ml, price, retail_price, stock_quantity, is_default)
+select id, 'ALM-50', 50, 480.00, 560.00, 40, false from products where slug = 'oud-al-malaki'
 union all
-select id, 'ALM-100', 100, 780.00, 850.00, 25, true from products where slug = 'oud-al-malaki';
+select id, 'ALM-100', 100, 780.00, 950.00, 25, true from products where slug = 'oud-al-malaki';
 
 insert into product_images (product_id, url, alt_en, alt_ar, is_primary, sort_order)
 select id, '/images/products/oud-al-malaki-1.jpg', 'Oud Al Malaki bottle', 'زجاجة عود الملكي', true, 1 from products where slug = 'oud-al-malaki'
@@ -91,7 +91,7 @@ with new_product as (
   ) returning id
 )
 insert into product_notes (product_id, position, name_en, name_ar, sort_order)
-select id, 'top'::note_position, 'Bergamot', 'برغموت', 1 from new_product
+select id, 'top', 'Bergamot', 'برغموت', 1 from new_product
 union all select id, 'top', 'Mandarin', 'يوسفي', 2 from new_product
 union all select id, 'middle', 'Jasmine', 'ياسمين', 1 from new_product
 union all select id, 'middle', 'Lily of the Valley', 'زنبق الوادي', 2 from new_product
@@ -106,12 +106,12 @@ insert into product_collections (product_id, collection_id)
 select p.id, c.id from products p, collections c
 where p.slug = 'zahrat-al-fajr' and c.slug = 'bestsellers';
 
-insert into product_variants (product_id, sku, size_ml, price, stock_quantity, is_default)
-select id, 'ZAF-30', 30, 220.00, 60, false from products where slug = 'zahrat-al-fajr'
+insert into product_variants (product_id, sku, size_ml, price, retail_price, stock_quantity, is_default)
+select id, 'ZAF-30', 30, 220.00, 260.00, 60, false from products where slug = 'zahrat-al-fajr'
 union all
-select id, 'ZAF-50', 50, 340.00, 45, true from products where slug = 'zahrat-al-fajr'
+select id, 'ZAF-50', 50, 340.00, 400.00, 45, true from products where slug = 'zahrat-al-fajr'
 union all
-select id, 'ZAF-100', 100, 520.00, 20, false from products where slug = 'zahrat-al-fajr';
+select id, 'ZAF-100', 100, 520.00, null, 20, false from products where slug = 'zahrat-al-fajr';
 
 insert into product_images (product_id, url, alt_en, alt_ar, is_primary, sort_order)
 select id, '/images/products/zahrat-al-fajr-1.jpg', 'Zahrat Al Fajr bottle', 'زجاجة زهرة الفجر', true, 1 from products where slug = 'zahrat-al-fajr';
@@ -139,7 +139,7 @@ with new_product as (
   ) returning id
 )
 insert into product_notes (product_id, position, name_en, name_ar, sort_order)
-select id, 'top'::note_position, 'Grapefruit', 'جريب فروت', 1 from new_product
+select id, 'top', 'Grapefruit', 'جريب فروت', 1 from new_product
 union all select id, 'top', 'Sea Notes', 'نفحات بحرية', 2 from new_product
 union all select id, 'middle', 'Lavender', 'خزامى', 1 from new_product
 union all select id, 'base', 'Ambergris', 'كهرمان', 1 from new_product
