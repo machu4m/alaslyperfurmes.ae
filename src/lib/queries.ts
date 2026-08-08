@@ -2,6 +2,7 @@ import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import type {
   Collection,
+  JournalPost,
   Product,
   ProductFilters,
   ScentFamily,
@@ -12,7 +13,7 @@ const PRODUCT_SELECT = `
   short_description_en, short_description_ar,
   description_en, description_ar,
   mood_en, mood_ar,
-    gender, concentration_en, concentration_ar,
+  gender, concentration_en, concentration_ar,
   currency, is_featured,
   meta_title_en, meta_title_ar, meta_description_en, meta_description_ar,
   variants:product_variants(id, sku, size_ml, price, retail_price, stock_quantity, is_default),
@@ -129,6 +130,24 @@ export async function getFeaturedProducts(limit = 8): Promise<Product[]> {
   return products.filter((p) => p.is_featured).slice(0, limit);
 }
 
+/**
+ * Products belonging to any of the given scent families — used for the
+ * "Shop {family} Perfumes" internal-linking block on journal posts
+ * (a post tagged 'oud' pulls in every current Oud product, so the link
+ * list can never go stale as the catalog changes).
+ */
+export async function getProductsByScentFamilies(
+  slugs: string[],
+  limit?: number
+): Promise<Product[]> {
+  if (slugs.length === 0) return [];
+  const all = await getProducts({});
+  const matches = all.filter((p) =>
+    p.scent_families.some((sf) => slugs.includes(sf.slug))
+  );
+  return limit ? matches.slice(0, limit) : matches;
+}
+
 export async function getCollectionBySlug(
   slug: string
 ): Promise<{ collection: Collection; products: Product[] } | null> {
@@ -167,31 +186,37 @@ export async function getScentFamilies(): Promise<ScentFamily[]> {
   return data ?? [];
 }
 
-export interface JournalPost {
-  id: string;
-  slug: string;
-  title_en: string;
-  title_ar: string;
-  excerpt_en: string | null;
-  excerpt_ar: string | null;
-  content_en: string | null;
-  content_ar: string | null;
-  cover_image_url: string | null;
-  published_at: string | null;
+const JOURNAL_SELECT = `
+  id, slug, title_en, title_ar,
+  excerpt_en, excerpt_ar,
+  content_en, content_ar,
+  cover_image_url, cover_image_alt_en, cover_image_alt_ar,
+  meta_title_en, meta_title_ar, meta_description_en, meta_description_ar,
+  published_at,
+  scent_families:journal_post_scent_families(scent_family:scent_families(id, slug, name_en, name_ar, sort_order))
+`;
+
+type RawJournalPost = Omit<JournalPost, "scent_families"> & {
+  scent_families: { scent_family: ScentFamily }[];
+};
+
+function normalizeJournalPost(row: RawJournalPost): JournalPost {
+  return {
+    ...row,
+    scent_families: row.scent_families.map((sf) => sf.scent_family),
+  };
 }
 
 export async function getJournalPosts(): Promise<JournalPost[]> {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("journal_posts")
-    .select(
-      "id, slug, title_en, title_ar, excerpt_en, excerpt_ar, content_en, content_ar, cover_image_url, published_at"
-    )
+    .select(JOURNAL_SELECT)
     .eq("is_published", true)
     .order("published_at", { ascending: false });
 
   if (error) throw error;
-  return data ?? [];
+  return (data as unknown as RawJournalPost[]).map(normalizeJournalPost);
 }
 
 export async function getJournalPostBySlug(
@@ -200,13 +225,12 @@ export async function getJournalPostBySlug(
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("journal_posts")
-    .select(
-      "id, slug, title_en, title_ar, excerpt_en, excerpt_ar, content_en, content_ar, cover_image_url, published_at"
-    )
+    .select(JOURNAL_SELECT)
     .eq("slug", slug)
     .eq("is_published", true)
     .maybeSingle();
 
   if (error) throw error;
-  return data;
+  if (!data) return null;
+  return normalizeJournalPost(data as unknown as RawJournalPost);
 }
