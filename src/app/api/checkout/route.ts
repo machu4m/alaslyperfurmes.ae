@@ -49,7 +49,9 @@ export async function POST(request: Request) {
   const variantIds = items.map((i) => i.variantId);
   const { data: variants, error: variantsError } = await supabase
     .from("product_variants")
-    .select("id, sku, size_ml, price, stock_quantity, product_id, products(name_en, name_ar)")
+    .select(
+      "id, sku, size_ml, price, stock_quantity, batch_code, product_id, products(name_en, name_ar)"
+    )
     .in("id", variantIds);
 
   if (variantsError || !variants) {
@@ -76,6 +78,10 @@ export async function POST(request: Request) {
       lineTotal: variant.price * item.quantity,
       nameEn: product.name_en,
       nameAr: product.name_ar,
+      // Snapshotted onto order_items below so the order confirmation always
+      // shows the batch actually shipped, even if the variant's current
+      // batch_code changes later (new stock in, different batch).
+      batchCode: variant.batch_code as string | null,
     };
   });
 
@@ -122,6 +128,7 @@ export async function POST(request: Request) {
       unit_price: item.unitPrice,
       quantity: item.quantity,
       line_total: item.lineTotal,
+      batch_code: item.batchCode,
     }))
   );
 
