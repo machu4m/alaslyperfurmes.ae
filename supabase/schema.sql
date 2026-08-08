@@ -145,6 +145,13 @@ create table product_variants (
   retail_price numeric(10, 2) check (retail_price is null or retail_price >= price),
   stock_quantity int not null default 0 check (stock_quantity >= 0),
   is_default boolean not null default false,
+  -- The current authorized-dealer batch this SKU's stock was received in
+  -- (printed on the box/bottle by the manufacturer). Nullable: not every
+  -- SKU has this tracked yet, and the Authenticity page's WhatsApp CTA is
+  -- the fallback for anything without one. One batch per variant at a time
+  -- is a simplification — if you ever hold two batches of the same SKU in
+  -- stock simultaneously, this needs to move to its own `batches` table.
+  batch_code text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -256,7 +263,13 @@ create table order_items (
   size_ml int not null,
   unit_price numeric(10, 2) not null,
   quantity int not null check (quantity > 0),
-  line_total numeric(10, 2) not null
+  line_total numeric(10, 2) not null,
+
+  -- snapshot of product_variants.batch_code at the moment of purchase, so
+  -- the order confirmation always reflects the batch actually shipped even
+  -- if the variant's current batch_code changes later. Null when the SKU
+  -- didn't have a batch code on file at checkout time.
+  batch_code text
 );
 
 create index order_items_order_id_idx on order_items (order_id);
