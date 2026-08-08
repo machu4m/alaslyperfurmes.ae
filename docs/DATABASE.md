@@ -15,6 +15,15 @@ Postgres schema, designed for [Supabase](https://supabase.com). Files live in `/
 
 ## Entity overview
 
+products (1) ──< product_variants (size / price / stock — what's actually sold)
+products (1) ──< product_notes (top / middle / base scent notes)
+products (1) ──< product_images
+products (M) ──< product_scent_families >── (M) scent_families (oud, floral, fresh, oriental, ...)
+products (M) ──< product_collections >── (M) collections (Bestsellers, Limited Edition, ...)
+journal_posts (M) ──< journal_post_scent_families >── (M) scent_families
+
+orders (1) ──< order_items >── products / product_variants (snapshotted)
+
 ### Why variants are separate from products
 
 A "product" is the fragrance (Oud Al Malaki). A "variant" is a specific
