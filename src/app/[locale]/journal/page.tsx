@@ -1,7 +1,28 @@
+import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { getJournalPosts } from "@/lib/queries";
 import { localize, type Locale } from "@/lib/types";
+import { buildAlternates } from "@/lib/seo";
+
+export function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Metadata {
+  const l = locale as Locale;
+  return {
+    title:
+      l === "ar"
+        ? "المجلة | أدلة العطور من الأصلي الإمارات"
+        : "Journal | Scent Guides by Al Asly UAE",
+    description:
+      l === "ar"
+        ? "أدلة وقصص عن العطور من الأصلي، لتساعدك على اختيار عطرك المميز."
+        : "Scent guides and stories from Al Asly to help you find your signature fragrance.",
+    alternates: buildAlternates(l, "/journal"),
+  };
+}
 
 export default async function JournalPage({
   params: { locale },
