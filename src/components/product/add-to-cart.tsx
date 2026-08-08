@@ -7,6 +7,7 @@ import { useCart } from "@/lib/cart-context";
 import { localize, type Locale, type Product } from "@/lib/types";
 import { cx, whatsAppLink } from "@/lib/utils";
 import { PriceTransparency } from "@/components/product/price-transparency";
+import { Link } from "@/i18n/navigation";
 
 export function AddToCart({ product }: { product: Product }) {
   const t = useTranslations("product");
@@ -83,10 +84,15 @@ export function AddToCart({ product }: { product: Product }) {
         size="detail"
       />
 
-      <p className="flex items-start gap-1.5 text-xs text-ink-400">
+      <Link
+        href="/authenticity"
+        className="flex items-start gap-1.5 text-xs text-ink-400 hover:text-oud-600"
+      >
         <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-oud-600" aria-hidden />
-        {t("sourcingTrustLine")}
-      </p>
+        <span className="underline decoration-dotted underline-offset-2">
+          {t("sourcingTrustLine")}
+        </span>
+      </Link>
 
       {outOfStock ? (
         <p className="text-sm font-medium text-oud-500">{t("outOfStock")}</p>
