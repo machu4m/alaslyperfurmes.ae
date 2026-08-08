@@ -5,7 +5,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { MessageCircle } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
 import { localize, type Locale, type Product } from "@/lib/types";
-import { cx, formatPrice, whatsAppLink } from "@/lib/utils";
+import { cx, whatsAppLink } from "@/lib/utils";
+import { PriceTransparency } from "@/components/product/price-transparency";
 
 export function AddToCart({ product }: { product: Product }) {
   const t = useTranslations("product");
@@ -75,9 +76,12 @@ export function AddToCart({ product }: { product: Product }) {
         </div>
       </div>
 
-      <p className="font-serif font-arabicDisplay text-2xl text-ink-900">
-        {formatPrice(variant.price, locale, product.currency)}
-      </p>
+      <PriceTransparency
+        price={variant.price}
+        retailPrice={variant.retail_price}
+        currency={product.currency}
+        size="detail"
+      />
 
       {outOfStock ? (
         <p className="text-sm font-medium text-oud-500">{t("outOfStock")}</p>
