@@ -38,12 +38,13 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: {
-    default: "Alasly | الأصلي — Arabian Perfumery",
-    template: "%s | Alasly",
+    default: "Al Asly | الأصلي — Authentic Perfumes in Dubai, UAE",
+    template: "%s | Al Asly",
   },
   description:
-    "Handcrafted Arabian perfumes for the modern GCC. Oud, floral, fresh and oriental fragrances, shipped across the Gulf.",
+    "A hand-picked edit of authentic branded and niche perfumes, sourced directly from authorized dealers in Dubai, UAE.",
 };
 
 export default async function LocaleLayout({
