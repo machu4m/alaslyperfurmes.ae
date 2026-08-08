@@ -1,7 +1,28 @@
+import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { PackageSearch, ShieldCheck, MessageCircle } from "lucide-react";
 import { whatsAppLink } from "@/lib/utils";
 import type { Locale } from "@/lib/types";
+import { buildAlternates } from "@/lib/seo";
+
+export function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Metadata {
+  const l = locale as Locale;
+  return {
+    title:
+      l === "ar"
+        ? "الأصالة والتحقق من رمز الدفعة | الأصلي الإمارات"
+        : "Authenticity & Batch Verification | Al Asly UAE",
+    description:
+      l === "ar"
+        ? "كيف تشتري الأصلي عطوراً أصلية من موزعين معتمدين في دبي، وكيف تتحقق من رمز الدفعة بنفسك."
+        : "How Al Asly sources authentic perfumes directly from authorized dealers in Dubai, and how to verify your batch code.",
+    alternates: buildAlternates(l, "/authenticity"),
+  };
+}
 
 const copy = {
   en: {
