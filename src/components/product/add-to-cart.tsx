@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, ShieldCheck } from "lucide-react";
 import { useCart } from "@/lib/cart-context";
 import { localize, type Locale, type Product } from "@/lib/types";
 import { cx, whatsAppLink } from "@/lib/utils";
@@ -82,6 +82,11 @@ export function AddToCart({ product }: { product: Product }) {
         currency={product.currency}
         size="detail"
       />
+
+      <p className="flex items-start gap-1.5 text-xs text-ink-400">
+        <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-oud-600" aria-hidden />
+        {t("sourcingTrustLine")}
+      </p>
 
       {outOfStock ? (
         <p className="text-sm font-medium text-oud-500">{t("outOfStock")}</p>
