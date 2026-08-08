@@ -27,7 +27,9 @@ with new_product as (
     description_en, description_ar,
     mood_en, mood_ar,
     gender, concentration_en, concentration_ar,
-    sku_prefix, is_featured
+    sku_prefix, is_featured,
+    meta_title_en, meta_title_ar,
+    meta_description_en, meta_description_ar
   ) values (
     'oud-al-malaki',
     'Oud Al Malaki', 'عود الملكي',
@@ -36,7 +38,14 @@ with new_product as (
     'يفتح عود الملكي بمزيج درامي من العود الكمبودي والزعفران، لينتقل إلى قلب دافئ من الورد والعنبر، وقاعدة دخانية راتنجية تدوم لساعات.',
     'Evening wear, formal occasions, cool weather.', 'للسهرات والمناسبات الرسمية وأجواء الطقس البارد.',
     'unisex', 'Eau de Parfum', 'أو دو بارفان',
-    'ALM', true
+    'ALM', true,
+    -- Manual SEO override, to show the override path works — every other
+    -- seed product falls through to the generated title/description
+    -- template instead (see src/lib/seo.ts).
+    'Oud Al Malaki Price in Dubai | Authentic Al Asly UAE',
+    'سعر عود الملكي في دبي | الأصلي عطور أصلية الإمارات',
+    'Oud Al Malaki (EDP) — 100% authentic Al Asly oud, sourced directly from authorized dealers in Dubai, UAE. Cambodian oud, saffron, rose and amber for evening wear.',
+    'عود الملكي (EDP) — عطر عود أصلي ١٠٠٪ من الأصلي، مصدره مباشر من موزعين معتمدين في دبي، الإمارات. عود كمبودي وزعفران وورد وعنبر، مثالي للسهرات.'
   ) returning id
 )
 insert into product_notes (product_id, position, name_en, name_ar, sort_order)
