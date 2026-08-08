@@ -186,6 +186,10 @@ create unique index product_images_one_primary_per_product
 -- ---------------------------------------------------------------------
 -- Journal / blog (optional, for SEO)
 -- ---------------------------------------------------------------------
+-- ---------------------------------------------------------------------
+-- Journal / blog — long-form SEO content: scent guides ("Best Oud Perfumes
+-- in Dubai 2026"), brand/scent comparison guides, etc.
+-- ---------------------------------------------------------------------
 create table journal_posts (
   id uuid primary key default gen_random_uuid(),
   slug text unique not null,
@@ -193,13 +197,44 @@ create table journal_posts (
   title_ar text not null,
   excerpt_en text,
   excerpt_ar text,
+  -- Markdown (see src/components/journal/markdown-content.tsx) — long-form
+  -- posts need real headings/lists/tables, not a single unformatted
+  -- paragraph. Relative links like `/product/oud-al-malaki` or
+  -- `/shop?scentFamily=oud` are automatically prefixed with the current
+  -- locale at render time; write them without a locale prefix.
   content_en text,
   content_ar text,
   cover_image_url text,
+  cover_image_alt_en text,
+  cover_image_alt_ar text,
+  -- SEO overrides, same pattern as products.meta_title_en/etc. — fall back
+  -- to a generated title/the excerpt when null.
+  meta_title_en text,
+  meta_title_ar text,
+  meta_description_en text,
+  meta_description_ar text,
   is_published boolean not null default false,
   published_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
+);
+
+create trigger journal_posts_set_updated_at
+  before update on journal_posts
+  for each row execute function set_updated_at();
+
+create index journal_posts_published_idx on journal_posts (is_published, published_at desc);
+
+-- Journal post <-> scent family (many-to-many). Drives the automatic
+-- "Shop {family} Perfumes" internal-linking block rendered on the post page
+-- (src/lib/queries.ts getProductsByScentFamilies + the journal post page) —
+-- tag a post with 'oud' and every current Oud product shows up as an
+-- internal link, no hand-maintained URLs, never goes stale as the catalog
+-- changes.
+create table journal_post_scent_families (
+  journal_post_id uuid not null references journal_posts (id) on delete cascade,
+  scent_family_id uuid not null references scent_families (id) on delete cascade,
+  primary key (journal_post_id, scent_family_id)
 );
 
 create trigger journal_posts_set_updated_at
