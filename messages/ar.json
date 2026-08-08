@@ -144,7 +144,8 @@
   "journal": {
     "title": "المجلة",
     "subtitle": "أدلة وقصص عن العطور من الأصلي",
-    "readMore": "اقرأ المزيد"
+    "readMore": "اقرأ المزيد",
+    "shopRelatedTitle": "تسوق عطور {families}"
   },
   "footer": {
     "aboutTitle": "الأصلي",
