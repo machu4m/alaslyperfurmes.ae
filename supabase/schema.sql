@@ -184,9 +184,6 @@ create unique index product_images_one_primary_per_product
   where is_primary;
 
 -- ---------------------------------------------------------------------
--- Journal / blog (optional, for SEO)
--- ---------------------------------------------------------------------
--- ---------------------------------------------------------------------
 -- Journal / blog — long-form SEO content: scent guides ("Best Oud Perfumes
 -- in Dubai 2026"), brand/scent comparison guides, etc.
 -- ---------------------------------------------------------------------
@@ -236,12 +233,6 @@ create table journal_post_scent_families (
   scent_family_id uuid not null references scent_families (id) on delete cascade,
   primary key (journal_post_id, scent_family_id)
 );
-
-create trigger journal_posts_set_updated_at
-  before update on journal_posts
-  for each row execute function set_updated_at();
-
-create index journal_posts_published_idx on journal_posts (is_published, published_at desc);
 
 -- ---------------------------------------------------------------------
 -- Orders
@@ -351,6 +342,7 @@ alter table product_notes enable row level security;
 alter table product_variants enable row level security;
 alter table product_images enable row level security;
 alter table journal_posts enable row level security;
+alter table journal_post_scent_families enable row level security;
 alter table orders enable row level security;
 alter table order_items enable row level security;
 
@@ -363,5 +355,6 @@ create policy "product_notes are public" on product_notes for select using (true
 create policy "product_variants are public" on product_variants for select using (true);
 create policy "product_images are public" on product_images for select using (true);
 create policy "published journal posts are public" on journal_posts for select using (is_published = true);
+create policy "journal_post_scent_families are public" on journal_post_scent_families for select using (true);
 
 -- orders / order_items: no policies -> only accessible via service_role (server-side)
