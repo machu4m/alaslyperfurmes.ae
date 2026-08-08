@@ -139,8 +139,10 @@ create table product_variants (
   product_id uuid not null references products (id) on delete cascade,
   sku text unique not null,
   size_ml int not null,
-  price numeric(10, 2) not null check (price >= 0),
-  compare_at_price numeric(10, 2) check (compare_at_price is null or compare_at_price >= price),
+    price numeric(10, 2) not null check (price >= 0),
+  -- the "before" price shown crossed out next to `price` for price-transparency
+  -- display (retail/MSRP vs. the actual Al Asly sell price)
+  retail_price numeric(10, 2) check (retail_price is null or retail_price >= price),
   stock_quantity int not null default 0 check (stock_quantity >= 0),
   is_default boolean not null default false,
   created_at timestamptz not null default now(),
