@@ -34,7 +34,8 @@ export interface ProductVariant {
   sku: string;
   size_ml: number;
   price: number;
-  compare_at_price: number | null;
+  /** Crossed-out "before" price used in the price-transparency display. */
+  retail_price: number | null;
   stock_quantity: number;
   is_default: boolean;
 }
@@ -90,6 +91,25 @@ export interface CartItem {
   price: number;
   quantity: number;
   stock_quantity: number;
+}
+
+/**
+ * A line item as returned by GET /api/orders/[orderNumber] for the checkout
+ * success page — deliberately excludes customer PII (name/address/phone),
+ * see that route for why. `batch_code` is the batch actually shipped,
+ * snapshotted onto order_items at checkout time.
+ */
+export interface OrderConfirmationItem {
+  product_name_en: string;
+  product_name_ar: string;
+  size_ml: number;
+  quantity: number;
+  batch_code: string | null;
+}
+
+export interface OrderConfirmation {
+  order_number: string;
+  items: OrderConfirmationItem[];
 }
 
 /** Pick the localized value of a bilingual `_en`/`_ar` field pair. */
