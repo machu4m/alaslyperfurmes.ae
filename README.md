@@ -101,4 +101,5 @@ launch:
 - An admin interface for managing products/orders (currently: Supabase
   table editor)
 - Order confirmation emails (currently: success page only)
-- Analytics, SEO sitemap/robots.txt, and a real FAQ/legal content pass
+- Analytics, and a real FAQ/legal content pass (SEO sitemap.xml/robots.txt
+  and per-page metadata/hreflang are in — see `docs/SEO.md`)
