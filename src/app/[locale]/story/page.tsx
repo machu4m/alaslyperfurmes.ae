@@ -4,19 +4,19 @@ import type { Locale } from "@/lib/types";
 const copy = {
   en: {
     heritage:
-      "Alasly began in a small atelier with a simple belief: perfume should tell the truth about where you come from. Drawing on generations of Arabian perfumery, every formula we release honors that lineage rather than imitating it.",
+      "Al Asly started with a simple frustration: buying real perfume in the UAE too often means wondering if you actually got the real thing. So we built relationships with a small circle of authorized dealers in Dubai, checked every batch ourselves, and only kept the fragrances we'd hand to a friend without a second thought.",
     sourcing:
-      "We work directly with growers and distillers across the region — oud from aged agarwood, saffron hand-picked at dawn, rose water distilled the traditional way. No shortcuts, no synthetic substitutes where the real thing exists.",
-    craftsmanship:
-      "Each bottle is blended in small batches, rested to mature, and finished and inspected by hand before it ever reaches a shelf. It's slower. It's also the only way we know how to make something worth wearing.",
+      "Every bottle listed here comes directly from authorized dealers in Dubai — no marketplaces, no resellers of resellers, no middlemen. That's also why we can show you the real retail price next to ours: there's nothing to hide when the sourcing is this direct.",
+    curation:
+      "We don't try to carry everything, and we won't pretend to. If a fragrance doesn't clear our bar — on authenticity, on the seller, on the price — it doesn't make the list. What's here is a short, honest edit: fewer bottles, but ones we'd actually recommend.",
   },
   ar: {
     heritage:
-      "بدأت الأصلي في محترف صغير، انطلاقاً من إيمان بسيط: يجب أن يعكس العطر حقيقة أصلك. مستلهمين من أجيال من صناعة العطور العربية، كل تركيبة نطلقها تكرّم هذا الإرث ولا تكتفي بتقليده.",
+      "بدأت الأصلي من إحباط بسيط: شراء عطر أصلي في الإمارات غالباً ما يعني التساؤل هل حصلت فعلاً على المنتج الحقيقي. لذلك بنينا علاقات مع مجموعة صغيرة من الموزعين المعتمدين في دبي، وتحققنا من كل دفعة بأنفسنا، واحتفظنا فقط بالعطور التي نُقدّمها لصديق دون أي تردد.",
     sourcing:
-      "نعمل مباشرة مع المزارعين والمقطرين في المنطقة — عود من خشب العود المعتّق، زعفران يُقطف يدوياً عند الفجر، ماء ورد يُقطّر بالطريقة التقليدية. بلا اختصارات، وبلا بدائل صناعية حيثما توفر الأصل.",
-    craftsmanship:
-      "تُمزج كل زجاجة على دفعات صغيرة، تُترك لتنضج، ثم تُشطَّب وتُفحص يدوياً قبل أن تصل إلى الرف. إنها عملية أبطأ، لكنها الطريقة الوحيدة التي نعرفها لصناعة عطر يستحق أن يُرتدى.",
+      "كل زجاجة هنا تصلنا مباشرة من موزعين معتمدين في دبي — لا أسواق وسيطة، ولا موزعين لموزعين، ولا وسطاء. لهذا السبب أيضاً نستطيع أن نُظهر لك السعر الأصلي الحقيقي بجانب سعرنا: لا شيء نخفيه عندما يكون المصدر مباشراً إلى هذا الحد.",
+    curation:
+      "لا نحاول أن نعرض كل شيء، ولن نتظاهر بذلك. إن لم يستوفِ العطر معاييرنا — في الأصالة، أو في البائع، أو في السعر — فلا مكان له في القائمة. ما تراه هنا مجموعة قصيرة وصادقة: عطور أقل، لكنها عطور نوصي بها فعلاً.",
   },
 } as const;
 
@@ -32,7 +32,7 @@ export default async function StoryPage({
   const sections = [
     { title: t("heritageTitle"), body: c.heritage },
     { title: t("sourcingTitle"), body: c.sourcing },
-    { title: t("craftsmanshipTitle"), body: c.craftsmanship },
+    { title: t("curationTitle"), body: c.curation },
   ];
 
   return (
