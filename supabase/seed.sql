@@ -58,10 +58,10 @@ insert into product_collections (product_id, collection_id)
 select p.id, c.id from products p, collections c
 where p.slug = 'oud-al-malaki' and c.slug in ('bestsellers', 'signature-collection');
 
-insert into product_variants (product_id, sku, size_ml, price, retail_price, stock_quantity, is_default)
-select id, 'ALM-50', 50, 480.00, 560.00, 40, false from products where slug = 'oud-al-malaki'
+insert into product_variants (product_id, sku, size_ml, price, retail_price, stock_quantity, is_default, batch_code)
+select id, 'ALM-50', 50, 480.00, 560.00, 40, false, 'DXB-ALM50-2408' from products where slug = 'oud-al-malaki'
 union all
-select id, 'ALM-100', 100, 780.00, 950.00, 25, true from products where slug = 'oud-al-malaki';
+select id, 'ALM-100', 100, 780.00, 950.00, 25, true, 'DXB-ALM100-2408' from products where slug = 'oud-al-malaki';
 
 insert into product_images (product_id, url, alt_en, alt_ar, is_primary, sort_order)
 select id, '/images/products/oud-al-malaki-1.jpg', 'Oud Al Malaki bottle', 'زجاجة عود الملكي', true, 1 from products where slug = 'oud-al-malaki'
