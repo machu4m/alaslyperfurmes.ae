@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { getJournalPostBySlug } from "@/lib/queries";
 import { localize, type Locale } from "@/lib/types";
+import { buildAlternates } from "@/lib/seo";
 
 interface JournalPostPageProps {
   params: { locale: string; slug: string };
@@ -13,7 +14,16 @@ export async function generateMetadata({
 }: JournalPostPageProps): Promise<Metadata> {
   const post = await getJournalPostBySlug(slug);
   if (!post) return {};
-  return { title: localize(locale as Locale, post.title_en, post.title_ar) };
+
+  const l = locale as Locale;
+  const title = localize(l, post.title_en, post.title_ar);
+  const description = localize(l, post.excerpt_en, post.excerpt_ar);
+
+  return {
+    title: l === "ar" ? `${title} | مجلة الأصلي` : `${title} | Al Asly Journal`,
+    description: description ?? undefined,
+    alternates: buildAlternates(l, `/journal/${slug}`),
+  };
 }
 
 export default async function JournalPostPage({
