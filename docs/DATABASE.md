@@ -15,16 +15,6 @@ Postgres schema, designed for [Supabase](https://supabase.com). Files live in `/
 
 ## Entity overview
 
-```
-products (1) ──< product_variants        (size / price / stock — what's actually sold)
-products (1) ──< product_notes           (top / middle / base scent notes)
-products (1) ──< product_images
-products (M) ──< product_scent_families >── (M) scent_families   (oud, floral, fresh, oriental, ...)
-products (M) ──< product_collections    >── (M) collections      (Bestsellers, Limited Edition, ...)
-
-orders (1) ──< order_items >── products / product_variants (snapshotted)
-```
-
 ### Why variants are separate from products
 
 A "product" is the fragrance (Oud Al Malaki). A "variant" is a specific
@@ -69,3 +59,23 @@ anonymous clients can neither read nor write orders directly.
 payment is confirmed (Stripe webhook) or immediately on order creation for
 Cash on Delivery. See `src/app/api/checkout/route.ts` and
 `src/app/api/webhooks/stripe/route.ts`.
+
+### Batch codes (authenticity)
+
+`product_variants.batch_code` records the authorized-dealer batch a SKU's
+current stock came from — printed on the box/bottle by the manufacturer.
+It's nullable: not every SKU has it on file yet, and the Authenticity page's
+WhatsApp CTA is the fallback for anything without one.
+
+At checkout, the batch code is copied onto `order_items.batch_code` — a
+snapshot, same reasoning as the `product_name_en`/`product_name_ar` columns
+next to it, so a customer's order confirmation keeps showing the batch they
+actually received even if the variant's `batch_code` changes later (new
+stock in, different batch). `GET /api/orders/[orderNumber]` (used by the
+checkout success page) reads from this snapshot, not from `product_variants`.
+
+This models **one batch in stock at a time per variant**. If you ever need
+to hold two batches of the same SKU simultaneously (old stock not yet sold
+through when new stock arrives), move `batch_code` out to its own
+`batches(id, variant_id, code, quantity, received_at)` table and decrement
+against a specific batch row instead of the variant directly.
