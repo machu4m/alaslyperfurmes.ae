@@ -69,7 +69,11 @@
     "descriptionTitle": "Description",
     "relatedTitle": "You May Also Like",
     "orderOnWhatsApp": "Order via WhatsApp",
-    "shareTitle": "Share"
+    "shareTitle": "Share",
+    "retailPrice": "Retail Price",
+    "alaslyPrice": "Al Asly Price",
+    "youSave": "You Save",
+    "youSaveShort": "Save {percentage}%"
   },
   "cart": {
     "title": "Your Cart",
