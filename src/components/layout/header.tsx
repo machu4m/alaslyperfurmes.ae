@@ -18,6 +18,7 @@ export function Header() {
     { href: "/", label: t("home") },
     { href: "/shop", label: t("shop") },
     { href: "/story", label: t("story") },
+    { href: "/authenticity", label: t("authenticity") },
     { href: "/journal", label: t("journal") },
     { href: "/contact", label: t("contact") },
   ] as const;
