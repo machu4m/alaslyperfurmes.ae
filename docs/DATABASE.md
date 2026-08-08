@@ -3,7 +3,7 @@
 Postgres schema, designed for [Supabase](https://supabase.com). Files live in `/supabase`:
 
 - `schema.sql` — tables, enums, indexes, RLS policies
-- `seed.sql` — 3 sample bilingual products + collections + a journal post, for local dev
+- `seed.sql` — 3 sample bilingual products + collections + 3 journal posts, for local dev
 
 ## Setting up
 
