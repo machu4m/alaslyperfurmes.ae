@@ -7,6 +7,7 @@
     "home": "Home",
     "shop": "Shop",
     "story": "Our Story",
+    "authenticity": "Authenticity",
     "journal": "Journal",
     "contact": "Contact",
     "cart": "Cart",
@@ -109,7 +110,20 @@
     "successTitle": "Thank you for your order!",
     "successBody": "Your order {orderNumber} has been received. We'll be in touch shortly.",
     "errorTitle": "Something went wrong",
-    "errorBody": "Please check your details and try again, or order via WhatsApp instead."
+    "errorBody": "Please check your details and try again, or order via WhatsApp instead.",
+    "orderItemsTitle": "What You Ordered",
+    "batchCodeLabel": "Batch Code",
+    "batchCodePending": "Not on file yet — message us and we'll confirm your batch.",
+    "verifyAuthenticityCta": "How we verify authenticity"
+  },
+  "authenticity": {
+    "title": "Authenticity",
+    "heroTitle": "How We Keep This Honest",
+    "sourcingTitle": "Direct From Authorized Dealers",
+    "whyTitle": "Why This Matters",
+    "verifyTitle": "Verify Your Batch Code",
+    "verifyCta": "Verify a Batch Code on WhatsApp",
+    "faqTitle": "Common Questions"
   },
   "contact": {
     "title": "Contact & Support",
