@@ -1,27 +1,98 @@
+@import "../styles/brand.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-sand-50 text-ink-900 antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Display type is set tight and slightly negative-tracked; Arabic display
+     needs the opposite — room, and no tracking at all. */
+  h1,
+  h2,
+  h3 {
+    @apply tracking-display;
+    text-wrap: balance;
+  }
+
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3 {
+    @apply tracking-normal;
+    line-height: 1.35;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    @apply bg-gold-500/30;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--asly-focus);
+    outline-offset: 2px;
+    border-radius: var(--asly-radius-xs);
+  }
 }
 
-body {
-  @apply bg-sand-50 text-ink-900 antialiased;
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .input {
+    @apply rounded-sm border border-ink-900/15 bg-white px-3.5 py-2.5 text-sm text-ink-900
+      transition placeholder:text-ink-400 focus:border-gold-600 focus:outline-none;
+  }
+
+  /* The brand's three buttons. Gold is the only fill that carries a CTA;
+     onyx is the quiet one; ghost is for anything that isn't a decision. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm px-5 py-3
+      text-sm font-semibold tracking-caps transition
+      duration-fast ease-brand disabled:cursor-not-allowed disabled:opacity-45;
+  }
+
+  .btn-gold {
+    @apply btn bg-gold-500 text-onyx-950 hover:bg-gold-400 active:bg-gold-600;
+  }
+
+  .btn-onyx {
+    @apply btn bg-onyx-850 text-sand-50 hover:bg-onyx-700 active:bg-onyx-900;
+  }
+
+  .btn-ghost {
+    @apply btn border border-ink-900/20 bg-transparent text-ink-900
+      hover:border-ink-900/40 hover:bg-ink-900/[0.03];
+  }
+
+  [data-on="dark"] .btn-ghost,
+  .btn-ghost[data-on="dark"] {
+    @apply border-sand-50/25 text-sand-50 hover:border-gold-500/60 hover:bg-sand-50/5;
+  }
+
+  /* Surfaces. On sand, a card is paper with a hairline. On onyx, it is a
+     pane of glass lit from the edge. */
+  .surface {
+    @apply rounded-md border border-ink-900/10 bg-white shadow-sm;
+  }
+
+  .surface-dark {
+    @apply rounded-md border border-sand-50/10 bg-onyx-800;
+  }
 }
 
 [dir="rtl"] .flip-rtl {
   transform: scaleX(-1);
-}
-
-::selection {
-  @apply bg-oud-500/20;
-}
-
-.container-page {
-  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
-}
-
-.input {
-  @apply rounded-md border border-ink-900/15 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 focus:border-oud-500 focus:outline-none;
 }

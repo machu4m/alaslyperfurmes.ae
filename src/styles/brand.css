@@ -1,0 +1,77 @@
+/* ==========================================================================
+   Al Asly — brand primitives
+   The token values themselves live in src/styles/tokens.ts and are emitted
+   onto :root as --asly-* by the Tailwind plugin. This file holds only the
+   handful of brand devices that cannot be expressed as a token.
+   Reference: docs/BRAND.md
+   ========================================================================== */
+
+/* The logotype's own setting, for the rare places a live-text brand line
+   stands in for the logo file (email signatures, plain-text headers). It is
+   never a substitute for the logo in layout. */
+.asly-logotype {
+  font-family: var(--asly-font-body);
+  font-weight: 600;
+  letter-spacing: var(--asly-tracking-logotype);
+  text-transform: uppercase;
+  /* the trailing letter's tracking would otherwise push the mark off-centre */
+  text-indent: var(--asly-tracking-logotype);
+}
+
+.asly-eyebrow {
+  font-family: var(--asly-font-body);
+  font-size: var(--asly-text-xs);
+  font-weight: 600;
+  letter-spacing: var(--asly-tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+/* Gold that behaves like leaf rather than paint. Falls back to flat gold
+   wherever background-clip: text is unavailable. */
+.asly-gilt {
+  color: var(--asly-gold-500);
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .asly-gilt {
+    background: var(--asly-gilt);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* A hairline with a single gold node at its centre — the brand's divider. */
+.asly-rule {
+  position: relative;
+  height: 1px;
+  background: var(--asly-line);
+}
+
+.asly-rule::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 50%;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  translate: -50% -50%;
+  rotate: 45deg;
+  background: var(--asly-gold-600);
+}
+
+.asly-rule[data-on="dark"] {
+  background: var(--asly-line-inverse);
+}
+
+.asly-rule[data-on="dark"]::after {
+  background: var(--asly-gold-500);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --asly-duration-fast: 0ms;
+    --asly-duration: 0ms;
+    --asly-duration-slow: 0ms;
+  }
+}

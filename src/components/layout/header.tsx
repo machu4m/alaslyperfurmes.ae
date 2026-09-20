@@ -5,12 +5,12 @@ import { useTranslations } from "next-intl";
 import { Menu, ShoppingBag, X } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./language-switcher";
+import { Logo } from "@/components/brand/logo";
 import { useCart } from "@/lib/cart-context";
 import { cx } from "@/lib/utils";
 
 export function Header() {
   const t = useTranslations("nav");
-  const tBrand = useTranslations("brand");
   const { itemCount } = useCart();
   const [open, setOpen] = useState(false);
 
@@ -24,13 +24,10 @@ export function Header() {
   ] as const;
 
   return (
-    <header className="sticky top-0 z-30 border-b border-ink-900/10 bg-sand-50/90 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-ink-900/10 bg-sand-50/85 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between">
-        <Link
-          href="/"
-          className="font-serif font-arabicDisplay text-2xl tracking-widest2 text-ink-900"
-        >
-          {tBrand("name")}
+        <Link href="/" className="text-ink-900 transition hover:text-gold-800">
+          <Logo variant="horizontal" width={132} title="Al Asly" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -38,7 +35,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-ink-700 transition hover:text-oud-500"
+              className="text-sm font-medium text-ink-700 transition hover:text-gold-800"
             >
               {link.label}
             </Link>
@@ -51,12 +48,12 @@ export function Header() {
           </div>
           <Link
             href="/cart"
-            className="relative flex h-9 w-9 items-center justify-center rounded-full text-ink-900 transition hover:text-oud-500"
+            className="relative flex h-9 w-9 items-center justify-center rounded-full text-ink-900 transition hover:text-gold-800"
             aria-label={t("cart")}
           >
             <ShoppingBag className="h-5 w-5" aria-hidden />
             {itemCount > 0 && (
-              <span className="absolute -top-1 end-[-2px] flex h-4 min-w-4 items-center justify-center rounded-full bg-oud-500 px-1 text-[10px] font-semibold text-white">
+              <span className="absolute -top-1 end-[-2px] flex h-4 min-w-4 items-center justify-center rounded-full bg-onyx-900 px-1 text-[10px] font-semibold text-gold-500">
                 {itemCount}
               </span>
             )}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Amiri, Inter, Playfair_Display, Tajawal } from "next/font/google";
+import { Amiri, Manrope, Playfair_Display, Tajawal } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -15,7 +15,9 @@ const playfair = Playfair_Display({
   variable: "--font-display",
   display: "swap",
 });
-const inter = Inter({
+// Manrope is the logotype's own face, so the interface and the logo share a
+// skeleton. See docs/BRAND.md §5.1.
+const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -45,6 +47,22 @@ export const metadata: Metadata = {
   },
   description:
     "A hand-picked edit of authentic branded and niche perfumes, sourced directly from authorized dealers in Dubai, UAE.",
+  applicationName: "Al Asly",
+  manifest: "/manifest.webmanifest",
+  openGraph: {
+    siteName: "Al Asly",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
+  // Warm, not blue-black: the browser chrome should match the brand ground.
+  other: { "color-scheme": "light" },
+};
+
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fbf8f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#171717" },
+  ],
 };
 
 export default async function LocaleLayout({
@@ -66,7 +84,7 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${playfair.variable} ${inter.variable} ${amiri.variable} ${tajawal.variable}`}
+      className={`${playfair.variable} ${manrope.variable} ${amiri.variable} ${tajawal.variable}`}
     >
       <body
         className={
