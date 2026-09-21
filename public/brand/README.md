@@ -8,7 +8,11 @@ change `tools/brand_geometry.py` (construction) or the palette in
 python3 tools/build_brand_assets.py
 ```
 
-Full rules: [`docs/BRAND.md`](../../docs/BRAND.md).
+Full rules: [`docs/BRAND.md`](../../docs/BRAND.md), or open
+[`brand-kit.html`](./brand-kit.html) — the same book as one self-contained
+page, with the logo system, construction drawings, palette, type specimens
+and live components. It needs no server: double-click it, or visit
+`/brand/brand-kit.html` once the site is running.
 
 ## Which file do I want?
 

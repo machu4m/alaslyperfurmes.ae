@@ -440,6 +440,7 @@ authenticity note, not beside the total.
 
 ```
 public/brand/
+├── brand-kit.html   this book as one self-contained page
 ├── logo/      SVG — lockups, mark, wordmarks, seal, tiles, in gold/onyx/ivory
 ├── icon/      favicon.svg, small-size favicon, maskable icon, PNG app icons
 ├── png/       2048 px transparent PNG exports of every lockup
@@ -459,7 +460,8 @@ tools/build_brand_assets.py   writes every file in public/brand/
 To change anything, change the geometry or the palette and run:
 
 ```bash
-python3 tools/build_brand_assets.py
+python3 tools/build_brand_assets.py   # every file in public/brand/
+python3 tools/build_brand_kit.py      # public/brand/brand-kit.html
 ```
 
 Design tokens live in **`src/styles/tokens.ts`** and are emitted both into the
